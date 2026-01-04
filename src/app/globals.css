@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -10,7 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} 
+*/
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,8 +20,23 @@
   }
 }
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@import "tailwindcss";
+
+@theme {
+  /* Vos couleurs personnalisées pour le chalet */
+  --color-mountain-dark: #2c3e50;
+  --color-mountain: #4a5d4e;
+  --color-mountain-light: #ecf0f1;
+  
+  --color-wood-light: #d2b48c;
+  --color-wood: #8b5a2b;
+  --color-wood-dark: #5d4037;
+  
+  --color-accent: #c0392b;
 }
