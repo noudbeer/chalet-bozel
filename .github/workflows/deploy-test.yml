@@ -1,0 +1,42 @@
+name: Deploy Env Test
+
+on:
+  push:
+    branches:
+      - env-test
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository }}/chalet-bozel-app-test:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}     # L'IP de ton serveur
+          username: ${{ secrets.SERVER_USER }} # Ton nom d'utilisateur (ex: simon)
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Ta clé privée SSH
+          script: |
+            cd ~/test-env
+            docker compose pull
+            docker compose up -d

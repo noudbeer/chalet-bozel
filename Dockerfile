@@ -23,6 +23,9 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# On crée le dossier et on donne la propriété à l'utilisateur nextjs
+RUN mkdir -p logs && chown nextjs:nodejs logs
+
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
@@ -30,4 +33,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 EXPOSE 3000
 ENV PORT 3000
+
+# Next.js standalone génère un fichier server.js
 CMD ["node", "server.js"]

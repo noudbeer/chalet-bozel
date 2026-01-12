@@ -1,7 +1,12 @@
 services:
   chalet-app:
-    build: .
-    container_name: chalet_web
+    #build: .
+    image: ghcr.io/noudbeer/chalet-bozel/chalet-bozel-app-test:latest
+    container_name: chalet-bozel-app
     ports:
-      - "3000:3000"
+      - "3001:3000"
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - NODE_ENV=production
     restart: always

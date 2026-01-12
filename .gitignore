@@ -43,6 +43,8 @@ next-env.d.ts
 node_modules
 .next
 .git
+.env
 .env.local
+.docker/
 
 logs
