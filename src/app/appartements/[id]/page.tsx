@@ -1,9 +1,9 @@
-import { APPARTEMENTS } from "@/data/appartements";
+import { appartements } from "@/data/appartements";
 import { notFound } from "next/navigation";
 
 export default async function DetailAppartement({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const appartement = APPARTEMENTS.find(a => a.id === Number(id));
+  const appartement = appartements.find(a => a.id === Number(id));
 
   if (!appartement) return notFound();
 
@@ -13,7 +13,7 @@ export default async function DetailAppartement({ params }: { params: Promise<{ 
       <img 
         src={`/images/${appartement.image}.${appartement.extension}`}
         alt={`Photo de ${appartement.image}.${appartement.extension}`}
-        className="aspect-video bg-mountain-dark rounded-3xl mb-8 text-white flex items-center justify-center text-3xl font-bold" 
+        className="aspect-video object-cover bg-mountain-dark rounded-3xl mb-8 text-white flex items-center justify-center text-3xl font-bold" 
       />
       <div className="grid md:grid-cols-3 gap-10">
         <div className="md:col-span-2">

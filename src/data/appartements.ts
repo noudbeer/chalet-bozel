@@ -9,16 +9,16 @@ export interface Appartement {
   description: string;
 }
 
-export const APPARTEMENTS: Appartement[] = [
+export const appartements: Appartement[] = [
   {
     id: 1,
-    nom: "Le dortoire",
-    capacite: 10,
-    surface: 50,
-    prixBase: 700,
+    nom: "Edelweiss",
+    capacite: 8,
+    surface: 70,
+    prixBase: 900,
     image: "bozel-ete", 
     extension: "jpg",
-    description: "Petit appartement de 3 personnes",
+    description: "Grand appartement spacieux de 8 personnes",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ export const APPARTEMENTS: Appartement[] = [
     capacite: 1,
     surface: 15,
     prixBase: 200,
-    image: "", 
+    image: "gneugneu", 
     extension: "jpg",
     description: "Petit appartement de 3 personnes",
   },

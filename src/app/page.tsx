@@ -22,9 +22,9 @@ export default function Home() {
             <Link href="/appartements" className="bg-wood hover:bg-wood/80 hover:backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-lg font-bold transition-all transform hover:scale-105">
               Découvrir nos appartements
             </Link>
-            <button className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/30 px-8 py-4 rounded-lg font-bold transition-all hover:scale-105">
+            <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/30 px-8 py-4 rounded-lg font-bold transition-all hover:scale-105">
               Nous contacter
-            </button>
+            </Link>
           </div>
         </div>
       </section>

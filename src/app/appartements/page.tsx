@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { APPARTEMENTS } from "@/data/appartements";
+import { appartements } from "@/data/appartements";
 
 export default function ListeAppartements() {
   return (
@@ -16,7 +16,7 @@ export default function ListeAppartements() {
       </section>
       
       <section className="py-20 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {APPARTEMENTS.map((app) => (
+        {appartements.map((app) => (
           <Link href={`/appartements/${app.id}`} key={app.id}>
             <div className="bg-white rounded-xl overflow-hidden shadow hover:shadow-2xl transition cursor-pointer">
               <img
