@@ -6,24 +6,30 @@ import { appartements } from '@/data/appartements';
 export default function ContactForm() {
   const [status, setStatus] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault(); // Empêche le rechargement de la page
-  const formData = new FormData(e.target);
-  const data = Object.fromEntries(formData);
+  const formData = new FormData(e.currentTarget);
+  const data = {
+    email: formData.get('email') as string,
+    phone: formData.get('phone') as string,
+    chalet: formData.get('chalet') as string,
+    subject: formData.get('subject') as string,
+    message: formData.get('message') as string,
+  }
 
   // --- 🛡️ ZONE DE CONTRÔLE FRONT-END ---
-  
-  // 1. Validation du téléphone (10 chiffres minimum)
+
+  // 1. Validation de l'email (format basique)
+  if (!data.email.includes('@') || data.email.length < 5) {
+    setStatus("❌ Veuillez entrer une adresse email valide.");
+    return;
+  }
+
+  // 2. Validation du téléphone (10 chiffres minimum)
   const phoneRegex = /^[0-9+ \(\)]{10,15}$/;
   if (!phoneRegex.test(data.phone)) {
     setStatus("❌ Le numéro de téléphone n'est pas valide.");
     return; // On arrête tout ici
-  }
-
-  // 2. Validation de l'email (format basique)
-  if (!data.email.includes('@') || data.email.length < 5) {
-    setStatus("❌ Veuillez entrer une adresse email valide.");
-    return;
   }
 
   // 3. Vérification du choix du chalet
