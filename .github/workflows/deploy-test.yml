@@ -1,4 +1,4 @@
-name: Deploy Env Test
+name: Deploy to Env Test
 
 on:
   push:
