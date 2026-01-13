@@ -37,6 +37,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/test-env
+            cd /srv/chalet-bozel
             docker compose pull
             docker compose up -d
